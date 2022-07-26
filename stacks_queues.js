@@ -120,56 +120,65 @@
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++
 
-class Node {
-    constructor(value){
-        this.value = value;
-        this.next  = null;
-    }
+// class Stack {
+//     constructor(){
+//         this.items = []
+//     }
+//     pushElement(val){
+//         this.items.push(val)
+//     }
+//     popElement(){
+//         if(this.items.length > 0) return this.items.pop()
+//     }
+//     peekElement(){
+//         if(this.items.length > 0) return this.items[this.items.length - 1]
+//     }
+//     length(){
+//        return this.items.length
+//     }
+//     getElements(){
+//         let arr = []
+//         for(let i = 0; i < this.items.length-1; i++){
+//             arr.push(this.items[i])
+//         }
+//         return arr
+//     }
+//     largestNum(){
+//         if(this.items.length > 0){
+//             let a = this.items[0]
+//             for(let i = 1; i < this.items.length; i++){
+//                 if(this.items[i] > a){
+//                     a = this.items[i]
+//                 }
+//             }
+//             return a
+//         }
+//     }
+//     destryEle(val){
+//         if(this.items.length){
+//             let index = this.items.indexOf(val)
+//             this.items.splice(index,1)
+//         }
+//     }
+// }
+
+// let stack = new Stack
+// let array = [1,2,3,4,45,6,7,1076,679]
+// for(let i = 0; i < array.length; i++){
+//     stack.pushElement(array[i])
+// }
+// // console.log(stack.length())
+// // console.log(array.length)
+// // console.log(stack)
+// // console.log(array)
+// console.log(stack.destryEle(1076))
+// console.log(stack.largestNum())
+
+
+let a = 1
+while(a < 10){
+  console.log(a)
+  a++
 }
 
-class LinkedList{
-    constructor(){
-        this.head = null // return top value of the stack
-        this.size = 0
-        this.tail = null 
-    }
-    pushBack(){
-        const newNode = new Node(data)
-        newNode.next = this.head;
-        this.head = node;
-        if(this.size === 0){
-            this.tail = newNode
-        }
-        this.size++
-    }
-
-    popBack(){
-        if(!this.size){
-            throw Error('stack is empty')
-        }
-        let curr = this.head
-        this.head = this.head.next;
-        this.size--;
-        curr.next = null
-        return curr.data
-    }
-}
-
-class stack{
-
-}
-
-getSize(){
-    return this.list.size
-}
-
-isEmpty(){
-    return this.list.size === 0
-}
-}
-
-const st = new stack();
-
-st.push(10)
-st.push(20)
-st.push(30)
+//for(let i = 0; i < 10; i++)

@@ -954,18 +954,18 @@ console.log(arrayList.reduce((prev, current) => {
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-let result = 0
-var reverse = function(x) {
-    let a = Math.abs(x)
-    if(a > 0){
-      result = result*10 + a % 10
-      return reverse(parseInt(a/10))
-    }
-    if(x < 0){
-      return '-'+result
-    }
-    else{
-      return result
-    }
-};
-console.log(reverse(-123))
+// let result = 0
+// var reverse = function(x) {
+//     let a = Math.abs(x)
+//     if(a > 0){
+//       result = result*10 + a % 10
+//       return reverse(parseInt(a/10))
+//     }
+//     if(x < 0){
+//       return '-'+result
+//     }
+//     else{
+//       return result
+//     }
+// };
+// console.log(reverse(-123))
