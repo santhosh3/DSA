@@ -108,7 +108,7 @@
  * As a result if the state of the oject changes through any of the reference variable it is
  * reflected for both
  */
-//let emp = {
+// let emp = {
 //     name : "xyz",
 //     age : 23,
 //     college : "abc"
@@ -188,17 +188,144 @@ newEmp => { name: 'ABC', age: 34, place: 'hyd' }
 // }
 // console.log(fib(4))
 
-function fiba(n){
-   const res = [1,1]
-   for(let i = 2; i <= n; i++){
-     let a = res[i-1]
-     let b = res[i-2]
-     res.push(a+b)
-   }
-  return res[n]
+// function fiba(n){
+//    const res = [1,1]
+//    for(let i = 2; i <= n; i++){
+//      let a = res[i-1]
+//      let b = res[i-2]
+//      res.push(a+b)
+//    }
+//   return res[n]
+// }
+// console.log(fiba(4))
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//callback functions 
+
+// function first(value,callback){
+//   callback(value+2, false)
+// }
+
+// function second(value,callback){
+//   callback(value+2, false)
+// }
+
+// function third(value,callback){
+//   callback(value+2, false)
+// }
+
+// first(2,function(firstResult, err){
+//     if(!err){
+//       second(firstResult,function(secondResult,err){
+//         if(!err){
+//           third(secondResult,function(thirdResult,err){
+//             if(!err){
+//               console.log(thirdResult)
+//             }
+//           })
+//         }
+//       })
+//     }
+// })
+//****************************************************************************************************************** */
+
+// using promises
+
+// let promise = new Promise(function(resolve,reject) {
+//   resolve(2)
+// })
+
+// promise.then(first).then(second).then(third).then(function(response){
+//   console.log(response)
+// }).catch(error)
+
+// function first(value){
+//   return value+2
+// }
+
+// function second(value){
+//   return value+2
+// }
+
+// function third(value){
+//   return value+2
+// }
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// const userLeft = true
+// const userWatchCatMeme = true
+
+// function watchTutorialCallback(callback, errorCallBack){
+//   if(userLeft){
+//     errorCallBack({
+//       name : "user Left",
+//       message : ":("
+//     })
+//   } else if(userWatchCatMeme){
+//     errorCallBack({
+//       name : "userWatchingCatMeme",
+//       message : "BackEndWebDeveloper"
+//     })
+//   }else{
+//     callback("Thumbs up and best of Luck")
+//   }
+// }
+// watchTutorialCallback((message) => {
+//   console.log( 'success: '+ message)
+// // }, (error) => {
+// //   console.log(error.name + ' ' + error.message)
+// // })
+// })
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function factorial(a,b,callback){
+  setTimeout(() => {
+    callback(a*b);
+  },1000)
+};
+factorial(6,5,(val1) => {
+  factorial(4,val1,(val2) => {
+    factorial(3,val2,(val3) => {
+      factorial(2,val3,(val4) => {
+        console.log(val4)
+      })
+    })
+  })
+})
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function factorial1(a,b) {
+  return new Promise((resolve,reject) => {
+    setTimeout(() => {
+      resolve(a*b)
+    },1000)
+  })
 }
-console.log(fiba(4))
+factorial1(6,5).then((val1) => {
+  return factorial1(val1,4)
+}).then((val2) => {
+  return factorial1(val2,3)
+}).then((val3) => {
+  return factorial1(val3,2)
+}).then((val4) => {
+  console.log(val4)
+})
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+function factorial3(a,b){
+  return new Promise((resolve,reject) => {
+    setTimeout(() => {
+      resolve (a*b);
+    },1000)
+  })
+}
 
-
-
+async function calculateFact () {
+  let sum1 = await factorial3(6,5);
+  let sum2 = await factorial3(sum1,4);
+  let sum3 = await factorial3(sum2,3);
+  let sum4 = await factorial3(sum3,2);
+  console.log(sum4)
+}
+calculateFact();
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

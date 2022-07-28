@@ -1,0 +1,88 @@
+=> creating dataBase
+=> Deleting dataBase
+=> using a dataBase
+
+=> Data typees
+=> constraints in SQL
+=> creating Tables
+=> Modifing Tables
+=> Deleting Tables
+=> Deleting all data of Table
+
+=> what is tables and Database
+   Table is a collection of data, organising in terms of rows and columns
+   Database :- In SQL a dataBase is a collection of Table
+
+=> Let's create our first Database
+ => SHOW DATAASES;                         # list all dataBase
+ => CREATE DATABASE database_name          # creating a dataBase
+ => DROP DATAASES database_name            # deleting a dataBase
+ => USE database_name                      # using a dataBase
+
+=> these datatypes are enough for biginners
+=> dataTypes in SQL
+ => INT : Whole numbers        //23
+ => FLOAT (M,D) : Decimal number (approximate)   // 12.34
+ => DECIMAL (M,D) : Decimal number (precise)     // 
+
+=> Non numeric dataType
+ => CHAR(N) : fixed length character          // for fixed length it is usefull  ( It is faster compared to VARCHAR)
+ => VARCHAR(N) : varying length character     // saving space when it is non linear
+ => BOOLEAN : true or false value             // 
+ => ENUM('M', 'F') : value from defined list
+
+=> Date and Time type
+ => DATE : Date(YYYY-MM-DD)
+ => TIME : Time(HH-MM-SS)
+ => DATETIME : Data and Time (YYYY-MM-DD- HH-MM-SS)
+ => YEAR : year(YYYY)
+
+=> Creating table syntax
+
+ CREATE TABLE table_name (
+    column1 datatype constraints,
+    column2 datatype constraints,
+    ...........
+    ...........
+ )
+
+ Note : constraints are optional
+
+ constraints in SQL => SQL constraints are used to specify rules for data in a table
+ 
+ 1) NOT NULL
+ 2) UNIQUE
+ 3) PRIMARY KEY
+ 4) FORGINE KEY
+ 5) CHECK
+ 6) DEFAULT
+
+ constraints - Not NULL
+ => This constraint tells that we cannot store a null value in a column. That is, if a column is spesified as NOT NULL
+    then we will not be able to store null in This particular column any more
+ constraint - UNIQUE
+ => if there is any dulicate value then it will show error in the column
+
+ constraint - Primary Key
+ => This constrins when spscified with can uniqely identified each row in a table. And this constraint is used to specify 
+    a field in a primary Key
+    => primary key = Not Null + UNIQUE
+=> Each table can have only one primary key
+
+=> constraint - FORGINE Key
+ => Forgine key is used to link two tables together
+ => It is a column whose value mathes the value of another table's primary key column
+ => A table can have multiple column
+ => Foregine Key also prevent actions that will destroy relations between two Tables
+
+ constraint - CHECK
+ => this constraint helps to validate the value of a column to meet a particular condition
+    Age column has Check(age > 18) constraints
+ 
+ constraints - DEFAULT
+ => the DEFAULT constraints is used to set a DEFAULT value for a column
+
+ Table commands 
+  => DROP TABLE table_name                # deleting a table
+  => DESCRIBE table_name                  # meta data about column
+  => INSERT table_name(col1,col2, ...)    # inserting a table

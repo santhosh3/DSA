@@ -15,17 +15,17 @@
 // name.printFullName.call(name2)
 
 
-// let printFullName = function(city,state){
-//     console.log(this.firstName+ " " + this.lastName + " from " + city + ", " + state)
-// }
+let printFullName = function(city,state){
+    console.log(this.firstName+ " " + this.lastName + " from " + city + ", " + state)
+}
 
 
-// let name = {
+// let name1 = {
 //     firstName: "Santhosh",
 //     lastName: "kumar",
 // }
-// printFullName.call(name,"wanaparthy", "Telangana")
-// printFullName.apply(name,["wanaparthy", "Telangana"])
+// // printFullName.call(name1,"wanaparthy", "Telangana")
+// // printFullName.apply(name1,["wanaparthy", "Telangana"])
 
 // let name2 = {
 //     firstName: "Avinash",
@@ -35,7 +35,7 @@
 // printFullName.apply(name2, ["Hyderabad", "Maharasta"])
 
 // let printNames = printFullName.bind(name2, "Mumbai", "Gujarat")
-// //console.log(printNames);
+// console.log(printNames);
 // printNames()
 
 
