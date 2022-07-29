@@ -203,31 +203,31 @@ newEmp => { name: 'ABC', age: 34, place: 'hyd' }
 
 //callback functions 
 
-// function first(value,callback){
-//   callback(value+2, false)
-// }
+function first(value,callback){
+  callback(value+2)
+}
 
-// function second(value,callback){
-//   callback(value+2, false)
-// }
+function second(value,callback){
+  callback(value+2)
+}
 
-// function third(value,callback){
-//   callback(value+2, false)
-// }
+function third(value,callback){
+  callback(value+2)
+}
 
-// first(2,function(firstResult, err){
-//     if(!err){
-//       second(firstResult,function(secondResult,err){
-//         if(!err){
-//           third(secondResult,function(thirdResult,err){
-//             if(!err){
-//               console.log(thirdResult)
-//             }
-//           })
-//         }
-//       })
-//     }
-// })
+first(2,function(firstResult, err){
+    if(!err){
+      second(firstResult,function(secondResult,err){
+        if(!err){
+          third(secondResult,function(thirdResult,err){
+            if(!err){
+              console.log(thirdResult)
+            }
+          })
+        }
+      })
+    }
+})
 //****************************************************************************************************************** */
 
 // using promises
@@ -278,54 +278,64 @@ newEmp => { name: 'ABC', age: 34, place: 'hyd' }
 // })
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-function factorial(a,b,callback){
-  setTimeout(() => {
-    callback(a*b);
-  },1000)
-};
-factorial(6,5,(val1) => {
-  factorial(4,val1,(val2) => {
-    factorial(3,val2,(val3) => {
-      factorial(2,val3,(val4) => {
-        console.log(val4)
-      })
-    })
-  })
-})
+// function factorial(a,b,callback){
+//   setTimeout(() => {
+//     callback(a*b);
+//   },1000)
+// };
+// factorial(6,5,(val1) => {
+//   factorial(4,val1,(val2) => {
+//     factorial(3,val2,(val3) => {
+//       factorial(2,val3,(val4) => {
+//         console.log(val4)
+//       })
+//     })
+//   })
+// })
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-function factorial1(a,b) {
-  return new Promise((resolve,reject) => {
-    setTimeout(() => {
-      resolve(a*b)
-    },1000)
-  })
-}
-factorial1(6,5).then((val1) => {
-  return factorial1(val1,4)
-}).then((val2) => {
-  return factorial1(val2,3)
-}).then((val3) => {
-  return factorial1(val3,2)
-}).then((val4) => {
-  console.log(val4)
-})
+// function factorial1(a,b) {
+//   return new Promise((resolve,reject) => {
+//     setTimeout(() => {
+//       resolve(a*b)
+//     },1000)
+//   })
+// }
+// factorial1(6,5).then((val1) => {
+//   return factorial1(val1,4)
+// }).then((val2) => {
+//   return factorial1(val2,3)
+// }).then((val3) => {
+//   return factorial1(val3,2)
+// }).then((val4) => {
+//   console.log(val4)
+// })
+// //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// function factorial3(a,b){
+//   return new Promise((resolve,reject) => {
+//     setTimeout(() => {
+//       resolve (a*b);
+//     },1000)
+//   })
+// }
+
+// async function calculateFact () {
+//   let sum1 = await factorial3(6,5);
+//   let sum2 = await factorial3(sum1,4);
+//   let sum3 = await factorial3(sum2,3);
+//   let sum4 = await factorial3(sum3,2);
+//   console.log(sum4)
+// }
+// calculateFact();
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-function factorial3(a,b){
-  return new Promise((resolve,reject) => {
-    setTimeout(() => {
-      resolve (a*b);
-    },1000)
-  })
+function capital(str){
+  let res = []
+  for (let i = 0; i < str.length; i++) {
+  let str2 = str[i][0].toUpperCase()+str[i].slice(1)
+  res.push(str2)
+  }
+  console.log(res)
 }
-
-async function calculateFact () {
-  let sum1 = await factorial3(6,5);
-  let sum2 = await factorial3(sum1,4);
-  let sum3 = await factorial3(sum2,3);
-  let sum4 = await factorial3(sum3,2);
-  console.log(sum4)
-}
-calculateFact();
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+capital(["abc", "pqr"])

@@ -264,17 +264,17 @@ var isAnagram = function(s,t) {
 
 // console.log(max_occorance, '>>>>>>>>>>>>>',max_occorance_char)
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// const elements = 'I is one of the fellow living in country india'
-// const arr = elements.replace(/ /g, "").toLowerCase().split('')
-// let max_occorance = 0, max_occorance_char = null
-// let freqObj = {}
-// arr.map(nums => {(freqObj[nums])? freqObj[nums]++ : freqObj[nums] = 1
-//   if(max_occorance < freqObj[nums]) {
-//   max_occorance = freqObj[nums];
-//   max_occorance_char = nums
+const elements = 'I is one of the fellow living in country india'
+const arr = elements.replace(/ /g, "").toLowerCase().split('')
+let max_occorance = 0, max_occorance_char = null
+let freqObj = {}
+arr.map(nums => {(freqObj[nums])? freqObj[nums]++ : freqObj[nums] = 1
+  if(max_occorance < freqObj[nums]) {
+  max_occorance = freqObj[nums];
+  max_occorance_char = nums
  
-// }} )
-// console.log(max_occorance, '>>>>>>>>>>>>>',max_occorance_char)
+}} )
+console.log(max_occorance, '>>>>>>>>>>>>>',max_occorance_char)
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // let A = [1,2,3,4,5]
@@ -627,7 +627,7 @@ var plusOne = (digits) => {
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function spaceSplit(str){
+//  function spaceSplit(str){
 
 //   let i = 0
 //   let j = 0

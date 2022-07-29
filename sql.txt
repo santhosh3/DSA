@@ -1,3 +1,5 @@
+difference between RDBMS and DBMS
+
 => creating dataBase
 => Deleting dataBase
 => using a dataBase
