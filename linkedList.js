@@ -379,13 +379,15 @@ class SinglyLinkedList{
         return this;
       }
       Reverse(){
+        let curr = this.head
         let prev = null
-        let current = node
-        let next = null
-        while(current != null){
-            next = current.next
-            
+        while(curr){
+            let holdNext = curr.next
+            curr.next = prev
+            prev = curr
+            curr = holdNext
         }
+        return prev
       }
       print(){
           var arr = [];

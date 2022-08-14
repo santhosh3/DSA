@@ -970,3 +970,208 @@ console.log(arrayList.reduce((prev, current) => {
 // };
 // console.log(reverse(-123))
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function change(bills){
+  let b = {"5" : 0, "10" : 0, "20" : 0}
+  for(let i = 0; i < bills.length; i++){
+      b[bills[i]] = b[bills[i]] + 1
+      if(bills[i] === 10){
+         b["5"]--
+      }if(bills[i] === 20){
+       if(b["10"] > 0){
+          b["10"]--
+          b["5"]--
+       }else{
+          b["5"] = b["5"] - 3;
+       }
+      }
+      if(b["5"] < 0 || b["10"] < 0){
+        return false
+      }
+  }
+  return true
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function minDifference(arr){
+  let Array = []
+  let smallestElement = Infinity;
+  arr.sort((a,b) => a-b);
+  for(let i = 1; i < arr.length; i++){
+    smallestElement = Math.min(smallestElement,arr[i]-arr[i-1])
+  }
+  for(let i = 1; i < arr.length; i++){
+    if(arr[i]-arr[i-1] === smallestElement){
+      Array.push(arr[i-1],arr[i])
+    }
+  }
+  return Array
+}
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function romanInt(s){
+  const map = {
+    I : 1,
+    V : 5,
+    X : 10,
+    L : 50,
+    C : 100,
+    D : 500,
+    M : 1000
+  }
+  let res = 0
+  s.split('').forEach((num,i) => {if(map[num] < map[s[i+1]]) res = res - map[num]
+           else res = res + map[num]})
+           return res
+}
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function maxImportance(n,roads){
+  let map = new Map()
+  for(let el of roads){
+    if(map.has(el[0])){
+       map.set(el[0], map.get(el[0])+1)
+    }else{
+       map.set(el[0],1)
+    }
+    if(map.has(el[1])){
+       map.set(el[1], map.get(el[1])+1)
+    }else{
+       map.set(el[1],1)
+    }
+  }
+  const sortMap = [...map.entries()].sort((a,b) => b[1]-a[1])
+  let map1 = new Map()
+  for(let i = 0; i < sortMap.length; i++){
+    map1.set(sortMap[i][0],n--)
+  }
+  let sum = 0
+  for(let i = 0; i < roads.length; i++){
+    sum = sum + map1.get(roads[1][i]) + map1.get(roads[i][0])
+  }
+  return sum
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ function maximumUnits(arr,size){
+    let array = arr.sort((a,b) => b[1] - a[1])
+    let maxSum = 0
+    for(let i = 0; i < array.length; i++){
+      if(array[i][0] > size){
+         return maxSum + array[i][1]
+      }
+      maxSum = maxSum + array[i][0]*array[i][1]
+      size = size - array[i][0]
+    }
+    return maxSum
+ }
+ //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ function mostWordsFound(sen){
+  let len = []
+  for(let curr of sen){
+      var currCount = curr.split(' ').length
+      len.push(currCount)
+  }
+  let max = len[0]
+  for(i = 1; i < len.length; i++){
+      if(len[i] > max){
+         max = len[i]
+      }
+  }
+//  return max
+ }
+let sentences = ["alice and bob love leetcode", "i think so too", "this is great thanks very much"]
+console.log(mostWordsFound(sentences))
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function maximum(sentences){
+  let max = 0
+  for(let curr of sentences){
+    let a = curr.split(' ').length
+    max = Math.max(max,a)
+  }
+  return max
+}
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+function helper(ele){
+  let total = 0
+  for(let a of ele){
+    total = total + a
+  }
+  return total
+}
+
+function maxWealth(account){
+  let maxAmount  = -Infinity
+  for(let el of account){
+      maxAmount = Math.max(helper(el),maxAmount)
+  }
+  return maxAmount
+}
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function reverseVowels(s){
+  let res = new Array(s.length)
+  let vowels = new Set(["a","e","i","0","u","A","E","I","O","U"])
+  let left = 0
+  let right = s.length - 1
+  while(left < right){
+    if(vowels.has(s[left]) && vowels.has(s[right])){
+       res[left] = s[right]
+       res[right] = s[left]
+       left++
+       right--
+    }else if(vowels.has(s[left])){
+      res[right] = s[left]
+      right--
+    }else if(vowels.has(s[right])){
+      res[left] = s[right]
+      left++
+    }else{
+      res[left] = s[left]
+      res[right] = s[right]
+      left++
+      right--
+    }
+  }
+  if(left == right){
+    res[left] = s[left]
+  }
+  return res.join('')
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function merge(arr1,arr2){
+ let result = []
+ let i = 0;
+ let j = 0
+ while(i < arr1.length && j < arr2.length){
+  if(arr2[j] > arr1[i]){
+    result.push(arr1[i])
+    i++
+  }else{
+    result.push(arr2[j])
+    j++
+  }
+ }
+ while(i < arr1.length){
+  result.push(arr1[i])
+  i++
+ }
+ while(j < arr2.length){
+  result.push(arr2[j])
+  j++
+ }
+ return result
+} 
+
+function mergeSort(arr){
+  if(arr.length <= 1) return arr
+  let mid = Math.floor(arr.length/2);
+  console.log(mid)
+  let left = mergeSort(arr.slice(0,mid))
+  console.log(left)
+  let right = mergeSort(arr.slice(mid))
+  console.log(right)
+  return merge(left,right)
+}console.log(mergeSort([10,9,7,8,6,5,4,3,2,12,89,65]))

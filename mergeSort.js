@@ -2,6 +2,13 @@
 // //  * SPLITING SORTING AND MERGING
 // //  */
 
+// bubble sort
+// selection sort
+// insertion sort
+// quick sort
+// merge sort
+
+
  function merge(arr1, arr2){
     let results = [];
     let i = 0;
@@ -135,7 +142,6 @@ function quickSort(arr, left = 0, right = arr.length-1){
     }
     return arr
 }
-
 let arr = [9,8,7,100,6,5,4,3,2,1]
 console.log(quickSort(arr))
 
@@ -158,3 +164,82 @@ console.log(quickSort(arr))
 console.log(bubbleSort([37, 45, 29, 8])) */
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+/**
+ * QuickSort 
+ */
+
+//selection sort
+// 19 44 38 5 47 15
+// it will check the smallest element comparing first element if we found just swap the element
+// 19 44 38 5 47 15
+//          s           here 5 is the smallest element comparing to 19 then swap the element
+
+function selectionSort(arr){
+    for(let i = 0; i < arr.length; i++){
+        let lowest = i
+        for(let j = i+1; j < arr.length; j++){
+         if(arr[j] < arr[lowest]){
+            lowest = j
+         }
+        }
+        let temp = arr[i];
+        arr[i] = arr[lowest]
+        arr[lowest] = temp
+    }
+    return arr
+}
+selectionSort([34,22,10,19,17])
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function selectionSort1(arr){
+    function swap(arr,idx1,idx2){
+       ( [arr[idx1],arr[idx2]] = [arr[idx2], arr[idx1]])
+    }
+    for(let i = 0; i < arr.length; i++){
+        let lowest = i
+        for(let j = i+1; j < arr.length; j++){
+            if(arr[j] < arr[lowest]){
+                lowest = j
+            }
+        }
+        if(i != lowest) swap(arr,i,lowest)
+    }
+    return arr
+}
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function bubbleSort1(arr){
+    function swap(arr,idx1,idx2){
+        ([arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]])
+    }
+    for(let i = arr.length; i > 0; i--){
+        for(let j = 0; j < i-1; j++){
+            if(arr[j] > arr[j+1]){
+                swap(arr,j,j+1)
+            }
+        }
+    }
+    return arr
+}
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//start picking the second element in the array
+//Now compare the second element with the one before with the one before it and swap if necessary
+//continue to the next element and if it is in the incorrect order, iterate through the sorted portion
+// to place the element in the correct order
+
+function insertionSort(arr){
+    var currentVal;
+    for(var i = 1; i < arr.length; i++){
+        currentVal = arr[i];
+        for(var j = i-1; j >= 0 && arr[j] > currentVal; j--){
+            arr[j+1] = arr[j]
+        }
+        arr[j+1] = currentVal
+        console.log(j+1)
+    }
+    return arr
+}
+let arr1 = [2,1,9,76,4]
+console.log(insertionSort(arr1))
+// currentVal = arr[1] = 1 [2,2,9,76,4] => replaces [1,2,9,76,4]
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

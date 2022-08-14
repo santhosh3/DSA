@@ -86,21 +86,82 @@ let printFullName = function(city,state){
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-function isPrime(num){
-  for(let i = 2; i < num; i++){
-    if(num % 2 == 0) return false 
+// function isPrime(num){
+//   for(let i = 2; i < num; i++){
+//     if(num % 2 == 0) return false 
+//   }
+//   return true
+// }
+// function primeNumbers(n){
+//   let obj = {}
+//   let j = 1
+//   for(let i = 3; i < n; i++){
+//     if(isPrime(i)) {
+//      obj[j] = i
+//      j++
+//    }
+//  }
+//  return obj
+// }
+// console.log(primeNumbers(20))
+//+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function first(a,callback){
+  setTimeout(() => {
+    callback(a*a)
+  },1000)
+}
+// first(2,function(val1,err){
+//    if(!err){
+//     first(val1,function(val2,err){
+//       if(!err){
+//         first(val2,function(val3,err){
+//           if(!err){
+//             first(val2,function(val3,err){
+//               console.log(val3)
+//             })
+//           }
+//         })
+//       }
+//     })
+//    }
+// })
+first(2,function(val1,err){
+  if(!err){
+    console.log(val1)
   }
-  return true
+})
+first(2,function(val1){
+  console.log(val1)
+})
+
+// first(2,function(val1){
+//   first(val1,function(val2){
+//     first(val2,function(val3){
+//       first(val3,function(val4){
+//         console.log(val4)
+//       })
+//     })
+//   })
+// })
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function second(a){
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(a*a)
+    },1000)
+  })
 }
-function primeNumbers(n){
-  let obj = {}
-  let j = 1
-  for(let i = 3; i < n; i++){
-    if(isPrime(i)) {
-     obj[j] = i
-     j++
-   }
- }
- return obj
+second(2).then((val1) => {
+  return second(val1)
+}).then((val2) => {
+  console.log(val2)
+})
+
+async function calculate() {
+  let val1 = await second(2)
+  let val2 = await second(val1)
+  console.log(val2)
 }
-console.log(primeNumbers(20))
+calculate()

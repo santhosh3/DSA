@@ -136,61 +136,61 @@
 //                        e       a size is greater than  k start will increment by 1   e:1, b:1, a:1
 //                        b       a         2        b:1, e:1           size is 2                              4   - 3     + 1 = 2
 
-// function length(s, k) {
-//     let windowStart = 0;
-//     const map = new Map();
-//     let max = 0
-//     let str = ""
+function length(s, k) {
+    let windowStart = 0;
+    const map = new Map();
+    let max = 0
+    let str = ""
 
-//    for (let windowEnd = 0; windowEnd < s.length; windowEnd++) {
-//         let rightChar = s[windowEnd];
-//         if (!map.get(rightChar)) map.set(rightChar, 1);
-//         else map.set(rightChar, map.get(rightChar) + 1);
+   for (let windowEnd = 0; windowEnd < s.length; windowEnd++) {
+        let rightChar = s[windowEnd];
+        if (!map.get(rightChar)) map.set(rightChar, 1);
+        else map.set(rightChar, map.get(rightChar) + 1);
 
-//         while (map.size > k) {
-//             let leftChar = s[windowStart];
-//             if(map.get(leftChar) > 1) map.set(leftChar, map.get(leftChar) - 1);
-//             else map.delete(leftChar)
-//             windowStart++
-//         }
-//         if(max < windowEnd - windowStart + 1) {
-//             max = windowEnd - windowStart + 1
-//             str = s.slice(windowStart,windowEnd+1)
-//         }
-//     }
-//     return [max,str].join(", ")
-// }
+        while (map.size > k) {
+            let leftChar = s[windowStart];
+            if(map.get(leftChar) > 1) map.set(leftChar, map.get(leftChar) - 1);
+            else map.delete(leftChar)
+            windowStart++
+        }
+        if(max < windowEnd - windowStart + 1) {
+            max = windowEnd - windowStart + 1
+            str = s.slice(windowStart,windowEnd+1)
+        }
+    }
+    return [max,str].join(", ")
+}
 // let slength = "eceba"
 // console.log(length(slength,2))
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// let lengthOfLongestString = function(s) {
-//     let max = 0
-//     let windowStart = 0
-//     let obj = {}
-//     let str = ""
+let lengthOfLongestString = function(s) {
+    let max = 0
+    let windowStart = 0
+    let obj = {}
+    let str = ""
 
-//     for(let windowEnd = 0; windowEnd < s.length; windowEnd++){
-//         let rightChar = s[windowEnd];
-//         obj[rightChar] = obj[rightChar] + 1 || 1;
+    for(let windowEnd = 0; windowEnd < s.length; windowEnd++){
+        let rightChar = s[windowEnd];
+        obj[rightChar] = obj[rightChar] + 1 || 1;
 
-//         while(obj[rightChar] > 1){
-//             let leftChar = s[windowStart];
-//             if(obj[leftChar] > 1){
-//                 obj[leftChar]--
-//             }else{
-//                 delete obj[leftChar];
-//             }
-//             windowStart++
-//         }
-//         if(max < windowEnd - windowStart + 1) {
-//             max = windowEnd - windowStart + 1
-//             str = s.slice(windowStart, windowEnd+1)
-//         }
-//     }
-//     return [max,str].join(',')
-// }
+        while(obj[rightChar] > 1){
+            let leftChar = s[windowStart];
+            if(obj[leftChar] > 1){
+                obj[leftChar]--
+            }else{
+                delete obj[leftChar];
+            }
+            windowStart++
+        }
+        if(max < windowEnd - windowStart + 1) {
+            max = windowEnd - windowStart + 1
+            str = s.slice(windowStart, windowEnd+1)
+        }
+    }
+    return [max,str].join(',')
+}
 
 // let str = "abbcabcbb"
 // console.log(lengthOfLongestString(str))
@@ -204,19 +204,19 @@
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function uniqueElem(arr){
-    // let map = new Map()
-    // for(let el of arr){
-    //     if(!map.get(el)) map.set(el,1)
-    //     else map.set(el, map.get(el)+1)
-    // }
-//     let unique = []
-//     for(let pairs of map){
-//         if(pairs[1] == 1) unique.push(pairs[0])
-//     }
-//     return unique
-// }
-// let result = [1,1,2,22,3,5,11,2]
+function uniqueElem(arr){
+    let map = new Map()
+    for(let el of arr){
+        if(!map.get(el)) map.set(el,1)
+        else map.set(el, map.get(el)+1)
+    }
+    let unique = []
+    for(let pairs of map){
+        if(pairs[1] == 1) unique.push(pairs[0])
+    }
+    return unique
+}
+let result = [1,1,2,22,3,5,11,2]
 // console.log(uniqueElem(result))
 //OUTPUT = [2,22,3,11]
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -327,29 +327,29 @@
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function checkGivenSumPairExistsOrNot(arr,sum){
-//     const map = new Map()
-//     for(let el of arr){
-//         if(map.get(el)){
-//             map.set(el, map.get(el)+1)
-//         }else{
-//             map.set(el,1)
-//         }
-//     }
-//     for(let i = 0; i < arr.length; i++){
-//         let nextElement = sum - arr[i];
-//         if(map.get(nextElement)){
-//             if(nextElement == arr[i]  && map.get(nextElement) > 1){
-//                 console.log("pair Exist")
-//                 break;
-//             }else if(nextElement == arr[i] && map.get(nextElement) == 1){
-//                 console.log("pair Not Exist")
-//                 break;
-//             }
-//             console.log("pair Exist")
-//         }
-//     }
-// }
+ function checkGivenSumPairExistsOrNot(arr,sum){
+    const map = new Map()
+    for(let el of arr){
+        if(map.get(el)){
+            map.set(el, map.get(el)+1)
+        }else{
+            map.set(el,1)
+        }
+    }
+    for(let i = 0; i < arr.length; i++){
+        let nextElement = sum - arr[i];
+        if(map.get(nextElement)){
+            if(nextElement == arr[i]  && map.get(nextElement) > 1){
+                console.log("pair Exist")
+                break;
+            }else if(nextElement == arr[i] && map.get(nextElement) == 1){
+                console.log("pair Not Exist")
+                break;
+            }
+            console.log("pair Exist")
+        }
+    }
+}
 // (checkGivenSumPairExistsOrNot([9,2,4,5,9,7,4,5],10))
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -380,23 +380,23 @@
 // console.log(getPrimes(500))
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-//   var productExceptSelf = function(nums) {
-//     const left = new Array(nums.length).fill(0);
-//     left[0] = 1;
-//     const right = new Array(nums.length).fill(0);
-//     right[right.length - 1] = 1;
+  var productExceptSelf = function(nums) {
+    const left = new Array(nums.length).fill(0);
+    left[0] = 1;
+    const right = new Array(nums.length).fill(0);
+    right[right.length - 1] = 1;
     
-//       for(let i = 1; i < nums.length; i++){
-//           left[i] = nums[i-1] * left[i-1]
-//       }
-//       for(let i = right.length - 2; i >= 0; i--){
-//           right[i] = nums[i+1] * right[i+1]
-//       }
-//       for(let i = 0; i < nums.length; i++){
-//           nums[i] = right[i] * left[i]
-//       }
-//       return nums
-//   };
+      for(let i = 1; i < nums.length; i++){
+          left[i] = nums[i-1] * left[i-1]
+      }
+      for(let i = right.length - 2; i >= 0; i--){
+          right[i] = nums[i+1] * right[i+1]
+      }
+      for(let i = 0; i < nums.length; i++){
+          nums[i] = right[i] * left[i]
+      }
+      return nums
+  };
 
 //   console.log(productExceptSelf([1,2,3,4]))
 
@@ -438,37 +438,37 @@
 // };
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// const str = 'aabbbc';
-// const secondMostFrequent = str => {
-//    const strArr = str.split('');
-//    const map = strArr.reduce((acc, val) => {
-//       if(acc.has(val)){
-//          acc.set(val, acc.get(val) + 1);
-//       }else{
-//          acc.set(val, 1);
-//       };
-//       return acc;
-//    }, new Map);
-//    const frequencyArray = Array.from(map);
-//    return frequencyArray.sort((a, b) => {
-//       return b[1] - a[1];
-//    })[1][0];
+const str = 'aabbbc';
+const secondMostFrequent = str => {
+   const strArr = str.split('');
+   const map = strArr.reduce((acc, val) => {
+      if(acc.has(val)){
+         acc.set(val, acc.get(val) + 1);
+      }else{
+         acc.set(val, 1);
+      };
+      return acc;
+   }, new Map);
+   const frequencyArray = Array.from(map);
+   return frequencyArray.sort((a, b) => {
+      return b[1] - a[1];
+   })[1][0];
    
-// };
+};
 // console.log(secondMostFrequent(str));
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function secondMostFreq(str) {
-//     const strArr = str.split('');
-//     let map = new Map()
-//     for(let el of strArr){
-//         if(!map.get(el)) map.set(el,1)
-//         else map.set(el, map.get(el)+1)
-//     }
-//     let secondFreq = Array.from(map);
-//     return secondFreq.sort((a,b) => {return b[1] - a[1]})[1][0];
-// }
+function secondMostFreq(str) {
+    const strArr = str.split('');
+    let map = new Map()
+    for(let el of strArr){
+        if(!map.get(el)) map.set(el,1)
+        else map.set(el, map.get(el)+1)
+    }
+    let secondFreq = Array.from(map);
+    return secondFreq.sort((a,b) => {return b[1] - a[1]})[1][0];
+}
 // console.log(secondMostFreq('aabbbc'))
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -476,92 +476,92 @@
 
 
 
-// function sort01(arr){
-//     let curr=0,count0=0
-//     for(let i=0;i<arr.length;i++){
-//         if(arr[i]===0){
-//         count0++
-//         }
-//     }
-//     let count1=arr.length-count0
-//     while(count0>0){
-//         arr[curr]=0
-//         count0--
-//         curr++
-//     }
-//     while(count1>0){
-//         arr[curr]=1
-//         count1--
-//         curr++
-//     }
-// }
+function sort01(arr){
+    let curr=0,count0=0
+    for(let i=0;i<arr.length;i++){
+        if(arr[i]===0){
+        count0++
+        }
+    }
+    let count1=arr.length-count0
+    while(count0>0){
+        arr[curr]=0
+        count0--
+        curr++
+    }
+    while(count1>0){
+        arr[curr]=1
+        count1--
+        curr++
+    }
+}
 // const arr=[1,1,1,0,0,1,0,1,0,1,1]
 // sort01(arr)
 // console.log(arr)
 // //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function withoutPair(arr){
-//     let map = new Map()
-//     for(let el of arr){
-//         //if curr element value find in array
-//         if(map.get(el)){
-//             // increment the frequency count by 1
-//             map.set(el, map.get(el)+1)
-//         }else{
-//             map.set(el,1)
-//         }
-//     }
-//     console.log(map)
-//     for(let el of map){
-//         if(el[1] % 2 === 1){
-//             console.log("without pair of numbers is", el[0]);
-//         }
-//     }
-// }
+function withoutPair(arr){
+    let map = new Map()
+    for(let el of arr){
+        //if curr element value find in array
+        if(map.get(el)){
+            // increment the frequency count by 1
+            map.set(el, map.get(el)+1)
+        }else{
+            map.set(el,1)
+        }
+    }
+    console.log(map)
+    for(let el of map){
+        if(el[1] % 2 === 1){
+            console.log("without pair of numbers is", el[0]);
+        }
+    }
+}
 
 // withoutPair([11,1, 7 , 11,1, 2,2, 3,3,3, 48,4,4,48])
 // //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // // write a function to calculate the sum of three consecutive elements in an array.
 
-// function simpleMaxSumOf3Consecutive(arr,k=3){
-//      if(arr.length < k){
-//         return null;
-//      }
-//      let currMax = -Infinity;
-//      for(let i = 0; i < arr.length - k + 1; i++){
-//         let sum = 0;
-//         for(let j = 0; j < k; j++){
-//             sum = sum + arr[i+j];
-//         }
-//         if(sum > currMax){
-//             currMax = sum
-//         }
-//      }
-//      return currMax
-// }
+function simpleMaxSumOf3Consecutive(arr,k=3){
+     if(arr.length < k){
+        return null;
+     }
+     let currMax = -Infinity;
+     for(let i = 0; i < arr.length - k + 1; i++){
+        let sum = 0;
+        for(let j = 0; j < k; j++){
+            sum = sum + arr[i+j];
+        }
+        if(sum > currMax){
+            currMax = sum
+        }
+     }
+     return currMax
+}
 // console.log(simpleMaxSumOf3Consecutive([11,1,7,11,1,2,2,3,3,3,48,100,4,48]))
 
 // //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function simpleMaxSumOf3Consecutive1(arr,k=3){
-//     if(arr.length < k){
-//        return null;
-//     }
-//     let maxSum = 0
-//     let tempSum = 0
+function simpleMaxSumOf3Consecutive1(arr,k=3){
+    if(arr.length < k){
+       return null;
+    }
+    let maxSum = 0
+    let tempSum = 0
 
-//     for(let i = 0; i < k; i++){
-//         maxSum += arr[i] 
-//     }
-//     tempSum = maxSum;
-//     for(let i = k; i < arr.length; i++){
-//         tempSum = tempSum - arr[i-k] + arr[i]
-//         if(tempSum > maxSum){
-//             maxSum = tempSum
-//         }
-//     }
-//     return maxSum
-// }
+    for(let i = 0; i < k; i++){
+        maxSum += arr[i] 
+    }
+    tempSum = maxSum;
+    for(let i = k; i < arr.length; i++){
+        tempSum = tempSum - arr[i-k] + arr[i]
+        if(tempSum > maxSum){
+            maxSum = tempSum
+        }
+    }
+    return maxSum
+}
 
 // console.log(simpleMaxSumOf3Consecutive1([11,1,7,11,1,2,2,3,3,3,48,100,4,48]))
 
@@ -597,16 +597,16 @@
 // }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function twoSum(nums, target) {
-//     let numObj = {};
-//       for (let i = 0; i < nums.length; i++) {
-//         let complement = target - nums[i];
-//         if (numObj[complement] !== undefined) {
-//           return [numObj[complement], i];
-//         }
-//         numObj[nums[i]] = i;
-//       }
-//     }
+function twoSum(nums, target) {
+    let numObj = {};
+      for (let i = 0; i < nums.length; i++) {
+        let complement = target - nums[i];
+        if (numObj[complement] !== undefined) {
+          return [numObj[complement], i];
+        }
+        numObj[nums[i]] = i;
+      }
+    }
 
 // let nums = [2,7,11,15]
 // let target = 9
@@ -614,36 +614,36 @@
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// var maximumImportance = function(n, roads) {
-//   let map = new Map()
-//   for(let el of roads){
-//       if(map.get(el[0])){
-//           map.set(el[0], map.get(el[0]) + 1)
-//       }else{
-//           map.set(el[0],1)
-//       }
-//       if(map.get(el[1])){
-//           map.set(el[1], map.get(el[1]) + 1)
-//       }else{
-//           map.set(el[1],1)
-//       }
-//   }
-//   //assign values here from 1,2,3,4,5;
-//   let newMAp = new Map()
-//   const newMap = [...map.entries()].sort((a,b) => b[1] - a[1])
-//   for(let i = 0; i < newMap.length; i++){
-//       newMAp.set(newMap[i][0], n--)
-//   }  
-//   console.log(newMap)
-//   console.log(newMAp)
-//   let sum = 0
-//   for(let i = 0; i < roads.length; i++){
-//       sum = sum + newMAp.get(roads[i][0]) + newMAp.get(roads[i][1])
-//       console.log(sum)
-//   }
+var maximumImportance = function(n, roads) {
+  let map = new Map()
+  for(let el of roads){
+      if(map.get(el[0])){
+          map.set(el[0], map.get(el[0]) + 1)
+      }else{
+          map.set(el[0],1)
+      }
+      if(map.get(el[1])){
+          map.set(el[1], map.get(el[1]) + 1)
+      }else{
+          map.set(el[1],1)
+      }
+  }
+  //assign values here from 1,2,3,4,5;
+  let newMAp = new Map()
+  const newMap = [...map.entries()].sort((a,b) => b[1] - a[1])
+  for(let i = 0; i < newMap.length; i++){
+      newMAp.set(newMap[i][0], n--)
+  }  
+  console.log(newMap)
+  console.log(newMAp)
+  let sum = 0
+  for(let i = 0; i < roads.length; i++){
+      sum = sum + newMAp.get(roads[i][0]) + newMAp.get(roads[i][1])
+      console.log(sum)
+  }
   
-//   return sum
-// };
+  return sum
+};
 
 // let  n = 5, roads = [[0,1],[1,2],[2,3],[0,2],[1,3],[2,4]]
 // console.log(maximumImportance(n,roads))
@@ -653,94 +653,94 @@
 
 //MAXIMUM WORD SENTENCE
 
-// function maximumWord(sentence){
-//   let max = 0
-//   for(let currSentence of sentence){
-//     let currwordCount = currSentence.split(" ").length
-//     let word = currSentence.split(" ")
-//     console.log(word)
-//     if(currwordCount > max){
-//       max = currwordCount
-//     }
-//   }
-//   return max;
-// }
+function maximumWord(sentence){
+  let max = 0
+  for(let currSentence of sentence){
+    let currwordCount = currSentence.split(" ").length
+    let word = currSentence.split(" ")
+    console.log(word)
+    if(currwordCount > max){
+      max = currwordCount
+    }
+  }
+  return max;
+}
 // console.log(maximumWord(["please wait for me", "continue to fight", "continue to win"]))
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function squareRoot(number,left,right){
-//     while(true){
-//       let mid = (left + right)/2; // (3+4/2)=(7/2 = 3.5)...(3.5+4/2 = 3.75)...(3.75+4/2 = 3.875)
-//      // console.log(mid)
-//       let mul = mid*mid;          // 3*3 = 9   // 3.75*3.75 = 14.06 // 3.875*3.875 = 15.015625
-//       if(mul === number || (Math.abs(mul - number) < 0.00000001)){  
-//       // 9 === 15 (wrong) ||  9 - 15 = 6 < 0.000001 (wrong)
-//         console.log(mid)
-//         return mid;
-//       }
-//       else if(mul > number){  // (9 > 15) wrong  (14.06 > 15)wrong  (15.015625 > 15) correct
-//         right = mid                                                 //right = 3.875
-//        // console.log(right)
-//       }
-//       else{
-//         left = mid;  // left = 3.5   left = 3.75
-//        // console.log(left)
-//       }
-//     }
-// }
-// function findSqrt(number){
-//     let found = false
-//     let i = 1
-//     while(found == false){
-//       if(i * i === number){
-//         found = true
-//         console.log(i)
-//       }
-//       else if(i * i > number){
-//         var res = squareRoot(number, i-1, i)
-//         console.log(number, i-1, i)
-//         console.log(+res.toFixed(8), ">>>>>");
-//         found = true
-//       }
-//       i++
-//     }
-// }
+function squareRoot(number,left,right){
+    while(true){
+      let mid = (left + right)/2; // (3+4/2)=(7/2 = 3.5)...(3.5+4/2 = 3.75)...(3.75+4/2 = 3.875)
+     // console.log(mid)
+      let mul = mid*mid;          // 3*3 = 9   // 3.75*3.75 = 14.06 // 3.875*3.875 = 15.015625
+      if(mul === number || (Math.abs(mul - number) < 0.00000001)){  
+      // 9 === 15 (wrong) ||  9 - 15 = 6 < 0.000001 (wrong)
+        console.log(mid)
+        return mid;
+      }
+      else if(mul > number){  // (9 > 15) wrong  (14.06 > 15)wrong  (15.015625 > 15) correct
+        right = mid                                                 //right = 3.875
+       // console.log(right)
+      }
+      else{
+        left = mid;  // left = 3.5   left = 3.75
+       // console.log(left)
+      }
+    }
+}
+function findSqrt(number){
+    let found = false
+    let i = 1
+    while(found == false){
+      if(i * i === number){
+        found = true
+        console.log(i)
+      }
+      else if(i * i > number){
+        var res = squareRoot(number, i-1, i)
+        console.log(number, i-1, i)
+        console.log(+res.toFixed(8), ">>>>>");
+        found = true
+      }
+      i++
+    }
+}
 // let a = 7
 // findSqrt(a)
 // console.log(Math.sqrt(a))
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function missingNumber(arr=[]){
+function missingNumber(arr=[]){
 
-//   let min = Math.min(...arr);
+  let min = Math.min(...arr);
 
-//   for(let i = 0; i < arr.length; i++){
-//     arr[i] = arr[i] - min + 1; 
-//   }
+  for(let i = 0; i < arr.length; i++){
+    arr[i] = arr[i] - min + 1; 
+  }
 
-//   let missNumberln = missingNumber(arr);
-//   return missNumberln+min-1
-// }
+  let missNumberln = missingNumber(arr);
+  return missNumberln+min-1
+}
 
 // console.log(missingNumber([8,10,11,12,13,15,9]))
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// var maximumUnits = function(boxTypes, truckSize) {
-//   boxTypes.sort((a,b) => b[1] - a[1])
-//   console.log(boxTypes)
-//   let totalUnit = 0
-//   for(let i = 0; i < boxTypes.length; i++){
-//       if(boxTypes[i][0] > truckSize){                        // 5>10
-//           return totalUnit + truckSize * boxTypes[i][1]
-//       }
-//       totalUnit += boxTypes[i][0]*boxTypes[i][1]         // totalUnits = 0 + 5*10 = 50  ... 50 + 2*5 = 60
-//       truckSize -= boxTypes[i][0]                        // truckSize = 10 - 5 = 5  ... 5 - 2 =3 ...
-//   }
-//   return totalUnit    
-// };
+var maximumUnits = function(boxTypes, truckSize) {
+  boxTypes.sort((a,b) => b[1] - a[1])
+  console.log(boxTypes)
+  let totalUnit = 0
+  for(let i = 0; i < boxTypes.length; i++){
+      if(boxTypes[i][0] > truckSize){                        // 5>10
+          return totalUnit + truckSize * boxTypes[i][1]
+      }
+      totalUnit += boxTypes[i][0]*boxTypes[i][1]         // totalUnits = 0 + 5*10 = 50  ... 50 + 2*5 = 60
+      truckSize -= boxTypes[i][0]                        // truckSize = 10 - 5 = 5  ... 5 - 2 =3 ...
+  }
+  return totalUnit    
+};
 
 // let boxTypes = [[5,10],[2,5],[4,7],[3,9]], truckSize = 10
 // console.log(maximumUnits(boxTypes,truckSize))
@@ -750,35 +750,35 @@
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function plusOne(digits){
-//   for(let i = digits.length - 1; i >= 0; i--){
-//     if(digits[i] < 9){                           //1,9,9
-//       digits[i] = digits[i] + 1
-//       return digits;
-//     }else{
-//       digits[i] = 0                             //   2,0,0
-//     }
-//   }
-//   digits.unshift(1);
-//   return digits
-//}
+function plusOne(digits){
+  for(let i = digits.length - 1; i >= 0; i--){
+    if(digits[i] < 9){                           //1,9,9
+      digits[i] = digits[i] + 1
+      return digits;
+    }else{
+      digits[i] = 0                             //   2,0,0
+    }
+  }
+  digits.unshift(1);
+  return digits
+}
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // GROUP ANAGRAMS
 
-// function groupAnagrams(str){
-//     const sortedStr = str.map(word => word.split('').sort().join(''))
-//     const obj = {}
-//     for(let i = 0; i < sortedStr.length; i++){
-//       if(!obj[sortedStr[i]]){
-//         obj[sortedStr[i]] = [str[i]]
-//       }else{
-//         obj[sortedStr[i]].push(str[i])
-//       }
-//     }
-//     return Object.values(obj)
-// }
+function groupAnagrams(str){
+    const sortedStr = str.map(word => word.split('').sort().join(''))
+    const obj = {}
+    for(let i = 0; i < sortedStr.length; i++){
+      if(!obj[sortedStr[i]]){
+        obj[sortedStr[i]] = [str[i]]
+      }else{
+        obj[sortedStr[i]].push(str[i])
+      }
+    }
+    return Object.values(obj)
+}
 
 // let str = ["eat","tea","tan","ate","nat","bat"]
 // console.log(groupAnagrams(str))
@@ -816,44 +816,44 @@
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function optimisedPrime(num){
-//   if(num <= 1){
-//     return "No";
-//   }
-//   let k = Math.ceil(num**0.5);
-//   if(num == 2){
-//     return "Yes";
-//   }
-//   for(let i = 2; i <= k; i++){
-//     if(num % i == 0){
-//       return "No"
-//     }
-//   }
-//   return "Yes"
-// }
+function optimisedPrime(num){
+  if(num <= 1){
+    return "No";
+  }
+  let k = Math.ceil(num**0.5);
+  if(num == 2){
+    return "Yes";
+  }
+  for(let i = 2; i <= k; i++){
+    if(num % i == 0){
+      return "No"
+    }
+  }
+  return "Yes"
+}
 // const result = optimisedPrime(2)
 // console.log(result)
 
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function calculateTotalSum(banks){
-//   let totalSum = 0
+function calculateTotalSum(banks){
+  let totalSum = 0
 
-//   for(let balance of banks){
-//     totalSum += balance
-//   }
-//   return totalSum
-// }
+  for(let balance of banks){
+    totalSum += balance
+  }
+  return totalSum
+}
 
-// function calculateRichestPerson(accounts){
-//     let maxAmount = -Infinity
+function calculateRichestPerson(accounts){
+    let maxAmount = -Infinity
 
-//     for(let customer of accounts){
-//       maxAmount = Math.max(calculateTotalSum(customer), maxAmount)
-//     }
-//     return maxAmount;
-// }
+    for(let customer of accounts){
+      maxAmount = Math.max(calculateTotalSum(customer), maxAmount)
+    }
+    return maxAmount;
+}
 
 // console.log(calculateRichestPerson([[2,10,7],[7,1,10],[1,9,5]]))
 // MAXIMUM SUM IN ARRAY INSIDE ARRAY
@@ -876,24 +876,24 @@
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function generateString(number){
-//   let alphabet = "abcdefghijklmnopqrstuvwxyz";
-//   let finalStr = ""
-//   let currIndex = 0;
+function generateString(number){
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let finalStr = ""
+  let currIndex = 0;
 
-//   while(currIndex < number){
-//     finalStr = finalStr + alphabet[currIndex%26]
-//     currIndex++
-//   }
-//   return finalStr
-// }
+  while(currIndex < number){
+    finalStr = finalStr + alphabet[currIndex%26]
+    currIndex++
+  }
+  return finalStr
+}
 
-// function encodeNumberWithCharacter(arr){
-//   for(let i = 0; i < arr.length; i++){
-//     arr[i] = generateString(arr[i])
-//   }
-//   return arr
-// }
+function encodeNumberWithCharacter(arr){
+  for(let i = 0; i < arr.length; i++){
+    arr[i] = generateString(arr[i])
+  }
+  return arr
+}
 // let temp = [1,2,3,4,5,6,7,8,9,10]
 // temp = [32,21]
 // console.log(encodeNumberWithCharacter(temp))
@@ -952,24 +952,24 @@
 
 //CHECK IF BOTH HALFS OF THE STRING HAVE SAME SET OF CHARACTERS
 
-// function checkHalfs(str){
-//   if(str.length % 2 != 0){
-//     return "No"
-//   }
-//   let map = new Map()
-//   for(let i = 0; i < str.length; i++){
-//     if(i < str.length/2){
-//       map[str[i]] = map[str[i]] + 1 || 1
-//     }else{
-//       if(map[str[i]]){
-//          map[str[i]]--
-//       }else{
-//         return "No";
-//       }
-//     }
-//   }
-//   return "Yes";
-// }
+function checkHalfs(str){
+  if(str.length % 2 != 0){
+    return "No"
+  }
+  let map = new Map()
+  for(let i = 0; i < str.length; i++){
+    if(i < str.length/2){
+      map[str[i]] = map[str[i]] + 1 || 1
+    }else{
+      if(map[str[i]]){
+         map[str[i]]--
+      }else{
+        return "No";
+      }
+    }
+  }
+  return "Yes";
+}
 // console.log(checkHalfs("abcbac"))
 // console.log(checkHalfs("abcaabbc"))
 // console.log(checkHalfs("abcdeabcd"))
@@ -985,17 +985,17 @@
  * [1,3,5,7,9] => 1-X + 3-X + 5-X + 7-X + 9-X ==> (1+3+5+7+9) - 5X => X = AVERAGE OF THE ELEMENTS
  */
 
-// function avgInteger(arr){
-//   let sum = 0
-//   for(let el of arr){
-//     sum = sum + el
-//   }
-//   if(parseInt(sum/arr.length) == sum/arr.length){
-//     return sum/arr.length
-//   }else{
-//     return -1
-//   }
-// }
+function avgInteger(arr){
+  let sum = 0
+  for(let el of arr){
+    sum = sum + el
+  }
+  if(parseInt(sum/arr.length) == sum/arr.length){
+    return sum/arr.length
+  }else{
+    return -1
+  }
+}
 // console.log(avgInteger([1,2,3])) //2
 // console.log(avgInteger([-3,45,98,65,12,-56])) //-1
 // console.log(avgInteger([23,45,34,45,23,45,34,45,23,45])) // -1

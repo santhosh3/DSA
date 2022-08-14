@@ -43,23 +43,23 @@ BINARY SEARCH ALGO WILL WORK FOR THE SORTED ARRAY AND TIME COMPLEXITY OF BINARY 
  
                                                                              */
 // Original Solution
-// function binarySearch(arr, elem) {
-//     var start = 0;
-//     var end = arr.length - 1;
-//     var middle = Math.floor((start + end) / 2);
-//     while(arr[middle] !== elem && start <= end) {
-//         if(elem < arr[middle]){
-//             end = middle - 1;
-//         } else {
-//             start = middle + 1;
-//         }
-//         middle = Math.floor((start + end) / 2);
-//     }
-//     if(arr[middle] === elem){
-//         return middle;
-//     }
-//     return -1;
-// }
+function binarySearch(arr, elem) {
+    var start = 0;
+    var end = arr.length - 1;
+    var middle = Math.floor((start + end) / 2);
+    while(arr[middle] !== elem && start <= end) {
+        if(elem < arr[middle]){
+            end = middle - 1;
+        } else {
+            start = middle + 1;
+        }
+        middle = Math.floor((start + end) / 2);
+    }
+    if(arr[middle] === elem){
+        return middle;
+    }
+    return -1;
+}
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // Refactored Version
@@ -90,18 +90,19 @@ console.log(search)
  * ==> RETURN THE COUNT
  */
 
-//  function naiveSearch(long, short){
-//     var count = 0;
-//     for(var i = 0; i < long.length; i++){
-//         for(var j = 0; j < short.length; j++){
-//            if(short[j] !== long[i+j]) break;
-//            if(j === short.length - 1) count++;
-//         }
-//     }
-//     return count;
-// }
-// let NativeSearch = naiveSearch("lorie lolelold", "lol")
-// console.log(NativeSearch)
+ function naiveSearch(long, short){
+    var count = 0;
+    for(var i = 0; i < long.length; i++){
+        for(var j = 0; j < short.length; j++){
+           if(short[j] !== long[i+j]) break;
+           if(j === short.length - 1) count++;
+        }
+    }
+    return count;
+}
+
+let NativeSearch = naiveSearch("lorie lolelold", "lol")
+console.log(NativeSearch)
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // function naiveSearch(long, short){
@@ -141,59 +142,59 @@ console.log(search)
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function longestSubString(str) {
-// let end = 0
-// let start = 0
-// let maxlength = 0
+function longestSubString(str) {
+let end = 0
+let start = 0
+let maxlength = 0
 
-// const uniqueCharSet = new Set();
-// while(end < str.length) {
-//     if(!uniqueCharSet.has(str[end])) {
-//         uniqueCharSet.add(str[end]);
-//         end++;
-//        if(uniqueCharSet.size > maxlength) {
-//          maxlength = uniqueCharSet.size
-//        }
-//     }
-//     else {
-//         uniqueCharSet.delete(str[start])
-//         start++
-//     }
-// }
-// return maxlength
-// }
+const uniqueCharSet = new Set();
+while(end < str.length) {
+    if(!uniqueCharSet.has(str[end])) {
+        uniqueCharSet.add(str[end]);
+        end++;
+       if(uniqueCharSet.size > maxlength) {
+         maxlength = uniqueCharSet.size
+       }
+    }
+    else {
+        uniqueCharSet.delete(str[start])
+        start++
+    }
+}
+return maxlength
+}
 // const result = longestSubString('abaabcbb')
 // console.log(result)
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function longestSubString(str) {
-//     indexStartOfLongestSub = 0
-//     indexEndOfLongestSub = 0
+function longestSubString(str) {
+    indexStartOfLongestSub = 0
+    indexEndOfLongestSub = 0
 
-//     SwStart = 0
-//     SwLast = 0
+    SwStart = 0
+    SwLast = 0
 
-//     windowMap = {}
+    windowMap = {}
 
-//     while(SwLast <= String.length) {
-//         if(!windowMap[str[SwLast]]) {
-//             windowMap[str[SwLast]] = 1
-//             if(SwLast - SwStart > indexEndOfLongestSub - indexStartOfLongestSub){
-//                 indexStartOfLongestSub = SwStart
-//                 indexEndOfLongestSub = SwLast
-//             }
-//             SwLast++
-//         }
-//         else {
-//             while(str[SwStart] != str[SwLast]) {
-//                 SwStart++
-//                 delete windowMap[str[SwStart]]
-//             }
-//         }
-//     }
-//     return (indexStartOfLongestSub, indexEndOfLongestSub)
-// }
+    while(SwLast <= String.length) {
+        if(!windowMap[str[SwLast]]) {
+            windowMap[str[SwLast]] = 1
+            if(SwLast - SwStart > indexEndOfLongestSub - indexStartOfLongestSub){
+                indexStartOfLongestSub = SwStart
+                indexEndOfLongestSub = SwLast
+            }
+            SwLast++
+        }
+        else {
+            while(str[SwStart] != str[SwLast]) {
+                SwStart++
+                delete windowMap[str[SwStart]]
+            }
+        }
+    }
+    return (indexStartOfLongestSub, indexEndOfLongestSub)
+}
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 // const result = longestSubString('abcdefgh')
@@ -250,179 +251,179 @@ console.log(search)
 // console.log(dublicates(arr))
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function minwindow(str) {
-//     let mapStr = {}
-//     let distinct = 0;
-//     for (let el of str) {
-//         if (mapStr[el]) {
-//             mapStr[el]++
-//         }
-//         else {
-//             mapStr[el] = 1
-//             distinct++
-//         }
-//     }
+function minwindow(str) {
+    let mapStr = {}
+    let distinct = 0;
+    for (let el of str) {
+        if (mapStr[el]) {
+            mapStr[el]++
+        }
+        else {
+            mapStr[el] = 1
+            distinct++
+        }
+    }
 
 
-//     let mapWindow = {}
-//     let i = 0;
-//     let j = 0;
-//     let count = 0
-//     let minLength = str.length;
-//     let minStr = ""
-//     while (j != str.length) {
-//         if (mapWindow[str[j]]) {
-//             mapWindow[str[j]]++
-//         } else {
-//             mapWindow[str[j]] = 1
-//             count++
-//         }
-//         if (count < distinct) {
-//             j++;
-//         } else if (count == distinct) {
-//             while (count == distinct) {
-//                 if (minLength > j - i + 1) {
-//                     minLength = j - i + 1;
-//                     minStr = str.slice(i, j + 1)
-//                 }
-//                 mapWindow[str[i]]--;
-//                 if (mapWindow[str[i]] == 0) {
-//                     count--
-//                 }
-//                 i++;
-//             }
-//             j++
-//         }
-//     }
-//     return [minLength, minStr].join(", ");
-// }
-// let result = "aaabccbbdabbc"
-// console.log(minwindow(result))
+    let mapWindow = {}
+    let i = 0;
+    let j = 0;
+    let count = 0
+    let minLength = str.length;
+    let minStr = ""
+    while (j != str.length) {
+        if (mapWindow[str[j]]) {
+            mapWindow[str[j]]++
+        } else {
+            mapWindow[str[j]] = 1
+            count++
+        }
+        if (count < distinct) {
+            j++;
+        } else if (count == distinct) {
+            while (count == distinct) {
+                if (minLength > j - i + 1) {
+                    minLength = j - i + 1;
+                    minStr = str.slice(i, j + 1)
+                }
+                mapWindow[str[i]]--;
+                if (mapWindow[str[i]] == 0) {
+                    count--
+                }
+                i++;
+            }
+            j++
+        }
+    }
+    return [minLength, minStr].join(", ");
+}
+let result = "aaabccbbdabbc"
+console.log(minwindow(result))
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// const arr = [2,3,4,5,6,7,8,9];
-// const k = 15;
-// function findPairs(arr,k){
-//     let start = 0
-//     let end = arr.length - 1
-//     let array = []
-//     while(start < end){
-//         if(arr[start] + arr[end] === k){
-//             array.push([start, end])
-//         }
-//         else if(arr[start] + arr[end] <= k){
-//             start++;
-//         }
-//         else {
-//             end--;
-//         }
-//     }
-//     return array
-// }
+const arr = [2,3,4,5,6,7,8,9];
+const k = 15;
+function findPairs(arr,k){
+    let start = 0
+    let end = arr.length - 1
+    let array = []
+    while(start < end){
+        if(arr[start] + arr[end] === k){
+            array.push([start, end])
+        }
+        else if(arr[start] + arr[end] <= k){
+            start++;
+        }
+        else {
+            end--;
+        }
+    }
+    return array
+}
 // console.log(findPairs(arr,k))
 
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// var findAnagrams = function(s, p) {
-//     let hashMap = new Map()
-//     for(let i = 0; i < p.length; i++) {
-//         if(hashMap.has(p[i])) {                         // THIS WILL GOING TO MAP ALL THE ELEMENTS IN P 
-//             hashMap.set(p[i], hashMap.get(p[i]) + 1)    // a => 1, b => 1, c => 1
-//         } else {
-//             hashMap.set(p[i], 1)
-//         }
-//     }
-//     console.log(hashMap)
-//     let res = new Array()
-//     let start = 0, end = 0                            // TWO POINTERS USED START = 0 AND END = 0
-//     while(end < s.length) {                           // INETRATE ALL OVER THE LENGTH OF LONGEST STRING                                                      // C IS HAVING IN THE MAP SO IF COND SATISFY
-//         if(hashMap.get(s[end]) > 0) {
-//             hashMap.set(s[end], hashMap.get(s[end]) - 1)        // a => 1, b => 1, c => 0 *** a => 1, b => 0, c => 0 *** a&b&c => 0
-//             end++                                               // end = 1;                   end = 2                    end = 3
-//             if(end - start == p.length) {
-//                 res.push(start)
-//             }
-//         } else if(start == end) {
-//             start++
-//             end++
-//         } else {
-//             hashMap.set(s[start], hashMap.get(s[start]) + 1)   //
-//             start++
-//         }
-//     }
-//     return res
-// };
+var findAnagrams = function(s, p) {
+    let hashMap = new Map()
+    for(let i = 0; i < p.length; i++) {
+        if(hashMap.has(p[i])) {                         // THIS WILL GOING TO MAP ALL THE ELEMENTS IN P 
+            hashMap.set(p[i], hashMap.get(p[i]) + 1)    // a => 1, b => 1, c => 1
+        } else {
+            hashMap.set(p[i], 1)
+        }
+    }
+    console.log(hashMap)
+    let res = new Array()
+    let start = 0, end = 0                            // TWO POINTERS USED START = 0 AND END = 0
+    while(end < s.length) {                           // INETRATE ALL OVER THE LENGTH OF LONGEST STRING                                                      // C IS HAVING IN THE MAP SO IF COND SATISFY
+        if(hashMap.get(s[end]) > 0) {
+            hashMap.set(s[end], hashMap.get(s[end]) - 1)        // a => 1, b => 1, c => 0 *** a => 1, b => 0, c => 0 *** a&b&c => 0
+            end++                                               // end = 1;                   end = 2                    end = 3
+            if(end - start == p.length) {
+                res.push(start)
+            }
+        } else if(start == end) {
+            start++
+            end++
+        } else {
+            hashMap.set(s[start], hashMap.get(s[start]) + 1)   //
+            start++
+        }
+    }
+    return res
+};
 
-// let s = "cbaebabacd", p = "abc"
-// console.log(findAnagrams(s,p))
+let s = "cbaebabacd", p = "abc"
+console.log(findAnagrams(s,p))
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-///find all the anagrams in the given string
+// /find all the anagrams in the given string
 // str1 = cbaebabacd        str2 = abc
 // TIME COMPLEXITY 
 // SORT AN STRING IF IT IS NEEDED 
 // SLIDING WINDOW APPROCH
 // str2 array [0,0,0,0,0,0,0,0,0,0,0,0,0] // 26 zeroes
 
-// function searchAnagrams(str1,str2){
-//     let map = new Map()
-//     for(let el of str2){
-//         if(!map.get(el)) map.set(el, 1)
-//         else map.set(el, map.get(el)+1)
-//     }
-//     let start = 0
-//     let end = 0
-//     let result = []
-//     while(end < str1.length){
-//         if(map.get(str1[end])) {
-//             map.set(str1[end], map.get(str1[end] - 1))
-//             end++
-//             if(end - start == str2.length){
-//                 result.push(start)
-//             }
-//         }
-//         else if(start == end){
-//             start++;
-//             end++
-//         }
-//         else{
-//             map.set(str1[start], map.get(str1[start]+1))
-//             start++
-//         }
-//     }
-//     return result
-// }
+function searchAnagrams(str1,str2){
+    let map = new Map()
+    for(let el of str2){
+        if(!map.get(el)) map.set(el, 1)
+        else map.set(el, map.get(el)+1)
+    }
+    let start = 0
+    let end = 0
+    let result = []
+    while(end < str1.length){
+        if(map.get(str1[end])) {
+            map.set(str1[end], map.get(str1[end] - 1))
+            end++
+            if(end - start == str2.length){
+                result.push(start)
+            }
+        }
+        else if(start == end){
+            start++;
+            end++
+        }
+        else{
+            map.set(str1[start], map.get(str1[start]+1))
+            start++
+        }
+    }
+    return result
+}
 // let str1 = "cbaebabacd", str2 = "abc"
 // console.log(searchAnagrams(str1,str2))
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    // let lengthOfLongestString = (str) => {
-    //     let max = 0
-    //     let windowStart = 0
-    //     let obj = {}
-    //     let str2 = ""
+    let lengthOfLongestString = (str) => {
+        let max = 0
+        let windowStart = 0
+        let obj = {}
+        let str2 = ""
         
-    //     for(let windowEnd = 0; windowEnd < str.length; windowEnd++){
-    //         let rightChar = str[windowEnd]
-    //         obj[rightChar] = obj[rightChar]+1 || 1
+        for(let windowEnd = 0; windowEnd < str.length; windowEnd++){
+            let rightChar = str[windowEnd]
+            obj[rightChar] = obj[rightChar]+1 || 1
 
-    //         while(obj[rightChar] > 1){
-    //             let leftChar = str[windowStart]
-    //             if(obj[leftChar] > 1){
-    //               obj[leftChar]--
-    //             }else{
-    //                 delete obj[leftChar];
-    //             }
-    //             windowStart++
-    //         }
-    //         if(max < windowEnd - windowStart + 1)
-    //         {
-    //             max = windowEnd - windowStart + 1
-    //             str2 = str.slice(windowStart,windowEnd+1)
-    //         }
-    //     }
-    //     return [max,str2].join(",")
-    // }
+            while(obj[rightChar] > 1){
+                let leftChar = str[windowStart]
+                if(obj[leftChar] > 1){
+                  obj[leftChar]--
+                }else{
+                    delete obj[leftChar];
+                }
+                windowStart++
+            }
+            if(max < windowEnd - windowStart + 1)
+            {
+                max = windowEnd - windowStart + 1
+                str2 = str.slice(windowStart,windowEnd+1)
+            }
+        }
+        return [max,str2].join(",")
+    }
     // let str = "abaccabb"
     // console.log(lengthOfLongestString(str))
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

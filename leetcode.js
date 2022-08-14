@@ -264,17 +264,17 @@ var isAnagram = function(s,t) {
 
 // console.log(max_occorance, '>>>>>>>>>>>>>',max_occorance_char)
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-const elements = 'I is one of the fellow living in country india'
-const arr = elements.replace(/ /g, "").toLowerCase().split('')
-let max_occorance = 0, max_occorance_char = null
-let freqObj = {}
-arr.map(nums => {(freqObj[nums])? freqObj[nums]++ : freqObj[nums] = 1
-  if(max_occorance < freqObj[nums]) {
-  max_occorance = freqObj[nums];
-  max_occorance_char = nums
+// const elements = 'I is one of the fellow living in country india'
+// const arr = elements.replace(/ /g, "").toLowerCase().split('')
+// let max_occorance = 0, max_occorance_char = null
+// let freqObj = {}
+// arr.map(nums => {(freqObj[nums])? freqObj[nums]++ : freqObj[nums] = 1
+//   if(max_occorance < freqObj[nums]) {
+//   max_occorance = freqObj[nums];
+//   max_occorance_char = nums
  
-}} )
-console.log(max_occorance, '>>>>>>>>>>>>>',max_occorance_char)
+// }} )
+// console.log(max_occorance, '>>>>>>>>>>>>>',max_occorance_char)
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // let A = [1,2,3,4,5]
@@ -365,20 +365,20 @@ console.log(max_occorance, '>>>>>>>>>>>>>',max_occorance_char)
  * INPUT :- [9,9,9]  OUTPUT :- [1,0,0,0]
  */
 
-var plusOne = (digits) => {
-  for(let i = digits.length - 1; i >= 0; i--)
-  {
-    if(digits[i] < 9) {
-      digits[i] = digits[i] + 1
-      return digits;
-    }
-    else{
-      digits[i] = 0
-    }
-  }
-  digits.unshift(1)
-  return digits;
-}
+// var plusOne = (digits) => {
+//   for(let i = digits.length - 1; i >= 0; i--)
+//   {
+//     if(digits[i] < 9) {
+//       digits[i] = digits[i] + 1
+//       return digits;
+//     }
+//     else{
+//       digits[i] = 0
+//     }
+//   }
+//   digits.unshift(1)
+//   return digits;
+// }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -732,43 +732,43 @@ var plusOne = (digits) => {
 // console.log(isAnagram(s,t))
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function isBalance(str) {
-//   let stack = [];
+function isBalance(str) {
+  let stack = [];
 
-//   for (let i = 0; i < str.length; i++) {
-//       if (str[i] === "(" || str[i] === "[" || str[i] === "{") {
-//           stack.push(str[i]);
-//       }
+  for (let i = 0; i < str.length; i++) {
+      if (str[i] === "(" || str[i] === "[" || str[i] === "{") {
+          stack.push(str[i]);
+      }
 
-//       if (str[i] === "}") {
-//           if (stack[stack.length - 1] === "{") {
-//               stack.pop();
-//           }
-//           else {
-//               return false;
-//           }
-//       }
+      if (str[i] === "}") {
+          if (stack[stack.length - 1] === "{") {
+              stack.pop();
+          }
+          else {
+              return false;
+          }
+      }
 
-//       if (str[i] === "]") {
-//           if (stack[stack.length - 1] === "[") {
-//                stack.pop();
-//                }
-//           else {
-//               return false;
-//           }
-//       }
+      if (str[i] === "]") {
+          if (stack[stack.length - 1] === "[") {
+               stack.pop();
+               }
+          else {
+              return false;
+          }
+      }
 
-//       if (str[i] === ")") {
-//           if (stack[stack.length - 1] === "(") {
-//                stack.pop();
-//                }
-//           else {
-//               return false;
-//           }
-//       }
-//   }
-//   return stack.length === 0;
-// }
+      if (str[i] === ")") {
+          if (stack[stack.length - 1] === "(") {
+               stack.pop();
+               }
+          else {
+              return false;
+          }
+      }
+  }
+  return stack.length === 0;
+}
 // let s = isBalance("([][]")
 // console.log(s);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -801,44 +801,258 @@ var plusOne = (digits) => {
 // console.log(result);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-function numOfIncSubseqOfSizeK(arr, n, k){
-  let dp = new Array(k), sum = 0;            //k=3    [0, 0, 0, 0]
-  // Loop to create 2D array using 1D array
-  for (let i = 0; i < dp.length; i++) {             // [[0,0],[0,0],[0,0],[0,0]]
-        dp[i] = new Array(2);
+// function numOfIncSubseqOfSizeK(arr, n, k){
+//   let dp = new Array(k), sum = 0;            //k=3    [0, 0, 0, 0]
+//   // Loop to create 2D array using 1D array
+//   for (let i = 0; i < dp.length; i++) {             // [[0,0],[0,0],[0,0],[0,0]]
+//         dp[i] = new Array(2);
+//   }
+// // count of increasing subsequences of size 1
+// // ending at each arr[i]
+// for (let i = 0; i < n; i++) {                      // [[1,0],[]]
+//   dp[0][i] = 1;
+// }
+// // building up the matrix dp[][]
+// // Here 'l' signifies the size of
+// // increasing subsequence of size (l+1).
+// for (let l = 1; l < k; l++) {
+
+//   // for each increasing subsequence of size 'l'
+//   // ending with element arr[i]
+//   for (let i = l; i < n; i++) {
+
+//       // count of increasing subsequences of size 'l'
+//       // ending with element arr[i]
+//       dp[l][i] = 0;
+//       for (let j = l - 1; j < i; j++) {
+//           if (arr[j] < arr[i]) {
+//               dp[l][i] += dp[l - 1][j];
+//           }
+//       }
+//   }
+// }
+
+// // sum up the count of increasing subsequences of
+// // size 'k' ending at each element arr[i]
+// for (let i = k - 1; i < n; i++) {
+//   sum += dp[k - 1][i];
+// }
+
+// // required number of increasing
+// // subsequences of size k
+// return sum;
+// }
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//leetcode 46
+// if arr = [1,2,3]
+// output will be []
+
+// function permute(nums){                  //1,2,3
+//   const result = []                      //
+//   const dfs = (i,nums) => {              // 0,[1,2,3]
+//     if(i === nums.length){               // 0 == 3 not satisisfy
+//       return result.push(nums.slice())
+//     }
+//     for(let j = i; j < nums.length; j++){
+//       [nums[i], nums[j]] = [nums[j], nums[i]]    // [1,2,3]
+//       dfs(i+1, nums);
+//       [nums[i], nums[j]] = [nums[j], nums[i]]
+//     }
+//   }
+//   dfs(0, nums);
+//   return result
+// }
+
+// let arr = [1,2,3]
+// console.log(permute(arr))
+
+// function permutation(i,nums){
+//   const result = []
+//   function dfs(i,nums){
+//     if(i === nums.length){
+//       return result.push(nums.slice())
+//     }
+//     for(let j = i; j < nums.length; j++){
+//       [nums[i], nums[j]] = [nums[j], nums[i]]
+//       dfs(i+1, nums);
+//       [nums[i], nums[j]] = [nums[j], nums[i]]
+//     }
+//   }
+//   dfs(0,nums)
+//   return result
+// }
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// let sum = 0
+// const calc = (n) => {
+//   for(let i = 0; i <= n; i++){
+//     sum = sum + i
+//   }
+//   return sum
+// }
+// const memorisation = (fun) => {
+//   let cache = {};
+//   return function(...args){
+//     let n = args[0];
+//     if(n in cache){
+//        console.log("cache")
+//        return cache[n];
+//     }else{
+//       console.log("calculating first time")
+//       let result = fun(n);
+//       cache[n] = result;
+//       return result
+//     }
+//   }
+// }
+// console.time();
+// const effecient = memorisation(calc);
+// console.log(effecient(5));
+// console.timeEnd()
+
+// console.time();
+// console.log(effecient(10));
+// console.timeEnd()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function BFS(){
+//   let node = this.root
+//   let data = []
+//   let queue = []
+//   queue.push(node);
+//   while(queue.length){
+//     let root = queue.shift()
+//     data.push(root.value)
+//     if(root.left) queue.push(root.left)
+//     if(root.right) queue.push(root.right)
+//   }
+//   return data
+// }
+
+// function preOrder(){
+//   let data = []
+//   function traverse(node){
+//     data.push(node.value)
+//     if(node.left) traverse(node.left)
+//     if(node.right) traverse(node.right)
+//   }
+//   traverse(this.root)
+//   return data
+// }
+
+// function getAllSubstrings(str) {
+//   var i, j, result = [],result1 = []; 
+
+//   for (i = 0; i < str.length; i++) {
+//       for (j = i + 1; j < str.length + 1; j++) {
+//           result.push(str.slice(i, j));
+//       }
+//   }
+//  // let count = 0
+//   for (j = 0; j < result.length; j++){
+//     if(result[j].includes('a') || result[j].includes('e') || result[j].includes('i') || result[j].includes('o') || result[j].includes('u') ){
+//         result1.push(result[j])
+//     }
+//   }
+//   return result
+// }
+
+// var theString = 'aeib';
+// console.log(getAllSubstrings(theString));
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//find min in rotated sorted array
+
+// if un- rotated sorted array then left is always less than right [1,2,3,4,5]
+// [3,4,5,1,2] or [2,3,4,5,1] if mid is greater than left then move left to mid
+//                [5,1,2,3,4] if mid is smaller than left then move right to mid
+//                [5,4,1,2,3] => [5,4,1]
+
+// function findMin(nums){
+//   let left = 0
+//   let right = nums.length-1;
+//   if(right == 1) return nums[0]
+//   if(nums[left] < nums[right]) return nums[left]
+//   while(left <= right){
+//     let mid = Math.floor((left+right)/2);
+//     let leftVal = nums[left]
+//     let rightVal = nums[right]
+//     let midVal = nums[mid]
+//     let leftOfMid = nums[mid-1]
+//     let rightOfMid = nums[mid+1]
+//     if(midVal > rightOfMid){
+//       return rightOfMid
+//     }else if(leftOfMid > midVal){
+//       return midVal
+//     }
+//     if(midVal > leftVal){
+//       left = mid + 1
+//     }else{
+//       right = mid - 1
+//     }
+//   }
+// }
+
+function findMin(nums){
+  return searchMin(nums,0,nums.length-1);
+}
+function searchMin(nums,l,r){
+  if(l+1 >= r){
+    return Math.min(nums[l],nums[r])
   }
-// count of increasing subsequences of size 1
-// ending at each arr[i]
-for (let i = 0; i < n; i++) {                      // [[1,0],[]]
-  dp[0][i] = 1;
-}
-// building up the matrix dp[][]
-// Here 'l' signifies the size of
-// increasing subsequence of size (l+1).
-for (let l = 1; l < k; l++) {
-
-  // for each increasing subsequence of size 'l'
-  // ending with element arr[i]
-  for (let i = l; i < n; i++) {
-
-      // count of increasing subsequences of size 'l'
-      // ending with element arr[i]
-      dp[l][i] = 0;
-      for (let j = l - 1; j < i; j++) {
-          if (arr[j] < arr[i]) {
-              dp[l][i] += dp[l - 1][j];
-          }
-      }
+  if(nums[l] < nums[r]){
+    return nums[l]
   }
+  let mid = Math.floor((l+r)/2)
+  return Math.min(searchMin(nums,1,mid), searchMin(nums,mid+1,r))
 }
 
-// sum up the count of increasing subsequences of
-// size 'k' ending at each element arr[i]
-for (let i = k - 1; i < n; i++) {
-  sum += dp[k - 1][i];
-}
-
-// required number of increasing
-// subsequences of size k
-return sum;
-}
+let currDate = new Date()
+console.log(currDate.toLocaleDateString())
+console.log(currDate.toDateString())
+console.log(currDate.toLocaleString())
+console.log(currDate.toISOString())
+console.log(currDate.toString())
+console.log(currDate.getMonth())
+console.log(currDate.getDay())
+console.log(currDate.getFullYear())
+console.log(currDate.getHours())
+console.log(currDate.getMilliseconds())
+console.log(currDate.getDate())
+console.log(currDate.getTimezoneOffset())

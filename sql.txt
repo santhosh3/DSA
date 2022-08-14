@@ -16,7 +16,7 @@ difference between RDBMS and DBMS
    Database :- In SQL a dataBase is a collection of Table
 
 => Let's create our first Database
- => SHOW DATAASES;                         # list all dataBase
+ => SHOW DATABASES;                        # list all dataBase
  => CREATE DATABASE database_name          # creating a dataBase
  => DROP DATAASES database_name            # deleting a dataBase
  => USE database_name                      # using a dataBase
@@ -46,7 +46,15 @@ difference between RDBMS and DBMS
     column2 datatype constraints,
     ...........
     ...........
- )
+ );
+
+ create table student(
+    name varchar(255) not null,
+    email varchar(255) unique,
+    roll int,
+    age int,
+    primary key(roll)
+ );
 
  Note : constraints are optional
 
@@ -88,3 +96,319 @@ difference between RDBMS and DBMS
   => DROP TABLE table_name                # deleting a table
   => DESCRIBE table_name                  # meta data about column
   => INSERT table_name(col1,col2, ...)    # inserting a table
+
+     INSERT INTO student(name, email, roll, age) # insert into table
+     VALUES("santhosh", "santh@gmail.com", 12, 23) # insert values into table
+
+      SELECT * FROM student
+
+=> auto_increment is used to increment the value when we are executing not needed to add in 
+   not needed to added TABLE_INTO
+
+   drop table student;
+show tables;
+describe student;
+create table car_brands(
+     id int auto_increment,  
+     name varchar(20),
+     country varchar(50),
+     primary key(id)
+   );
+   
+create table car_models(
+     id int auto_increment,  
+     name varchar(20),
+     brand_id int,
+     primary key(id),
+     foreign key(brand_id) references car_brands(id)
+   );
+   
+create table student(
+     name varchar(255) not null,
+     email varchar(255) unique,
+     roll int,
+     age int,
+     primary key(roll)
+     );
+     
+INSERT INTO student(name, email, roll, age)
+VALUES("ankit", "ankit@gmail.com", 12, 23);
+
+insert into car_brands(name, country)
+VALUES("Toyota", "Japan"),("BWM", "germany"),("Tesla", "USA");
+
+insert into car_models(name, brand_id)
+value("Model S", 3),("Fortuner", 1);
+
+SELECT * FROM student;
+select * from car_brands; 
+select * from car_models;
+
+
+create table student(
+       name varchar(20),
+       age int,
+       check (age < 20)
+       );
+insert into student(name,age)
+values("karn", 15);
+
+select * from(student);
+describe student;
+
+create table student(
+       name varchar(20),
+       age int default 20
+       );
+       
+ALTER TABLE student
+ADD roll int;
+insert into student(name)
+values("karn");
+
+select * from(student);
+describe student;
+
+create table student(
+       name varchar(20),
+       age int default 20
+       );
+       
+ALTER TABLE student
+modify roll varchar(20);
+insert into student(name)
+values("karn");
+
+select * from(student);
+describe student;
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Modifying tables in SQL
+1) ALTER TABLE table_name                // it will add new col to ur table
+   ADD col_name datatype any_constraints
+
+2) ALTER TABLE table_name                // it will drop col in table
+   DROP col_name
+
+3) ALTER TABLE table_name                // it will modeify datatype for col and add constraint if any
+   Modify col_name datatype any_constraints
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+=> How to add or remove the primary key after the table is created?
+=> How to add or remove the unique key after the table is created?
+=> How to add or remove the Forgine key after the table is created?
+=> How to change column name?
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Adding primary key into the table
+   ALTER TABLE table_name
+   ADD primary key(column_name)
+Remove primary key into the table
+   ALTER TABLE table_name
+   DROP primary key
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+show databases;      // it will show all the database those are created
+
+use database_name;        // it will make the use of database database_name
+
+show tables;         // it will show all the tables in the database santhosh
+
+describe student     // it will show the 
+
+truncate student     // it will delete the data in the student table
+
+drop table student   // it will delete entire table of the student
+
+ALTER TABLE student  // it is used when we do any modeification in table
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+show databases;
+
+use santhosh;
+
+show tables;
+
+describe student;   it will show col {name, age, roll}
+
+adding primary key
+ALERT TABLE student;
+add primary key(roll)
+
+remove primary key
+ALTER TABLE student
+drop primary key
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Add and remove unique Key
+
+ALTER TABLE student;
+ADD CONSTRAINT name_is_unique;
+UNIQUE(name);
+
+describe student;
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ALTER TABLE student
+DROP INDEX name_is_unique
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Add and remove foreign key
+
+ALTER TABLE table_name
+ADD CONSTRAINT constraint_name
+FORGINE KEY(column_name)REFERENCES other_table-name(column_name)
+
+removing foreign key
+
+ALTER TABLE table_name
+DROP FORGINE KEY constraint_name;
+DROP KEY constraint_name;
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+describe car_brands
+describe car_models
+
+ALTER TABLE car_models
+ADD CONSTRAINT my_brand_id                   // ADDING FORGINE KEY
+FORGINE KEY(brand_id)REFERENCES car_brands(id)
+
+ALTER TABLE car_brands
+DROP FORGINE KEY my_brand_id
+DROP KEY my_brand_id
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// change col name
+
+ALERT TABLE table_name
+RENAME COLUMN old_col_name to new_col_name;
+
+CHALLANGES FOR THIS SECTION
+=> Create an address table with id, city, and pincode column
+=> Add new column to address table as state.
+=> Add city as primary key in address table
+=> rename your customer table address column to address_id and change its datatype to integer
+=> add forgine key to address_id which references address table id column.
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Inserting data into a table
+updating data into a table
+deleting data from a table
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+show databases;
+use santhosh;
+show tables;
+describe users;
+
+3 ways to insert data
+1) INSERT INTO users
+   values("santhosh",34)
+2) INSERT INTO users(name,gender,class)
+   values("devi","female",12)
+3)INSERT INTO users(name,gender,class)
+  values("santhosh", "male","12"),("kumar","male","23")
+
+select * from users;
+//+++++++++++++++++++++++++++++++++++++++++++
+
+updating rows in table
+
+UPDATE table_name
+SET col_name = "your_value", another_col = "your_value"
+WHERE some_condition
+
+some_condition example: id=1
+//+++++++++++++++++++++++++++++++++++
+
+UPDATE users
+SET class=4
+WHERE id=2 
+//the above syntax will work only when we give an Id 
+  but if we give any thing other than Id it wont work
+  we need to write syntax like
+
+UPDATE users;
+SET class=12;
+WHERE name = "santhosh";
+
+SET SQL_SAFE_UPDATES=0;  // this is called var class visit
+// The above syntax will work when other than ID u given in update
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+DELETING ROWS FROM TABLE
+
+DELETE FROM table_name
+WHERE some_condition
+
+example for some condition is :- gender = "male"
+                                     id = 1, etc
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+create database santhosh;
+use santhosh;
+create table product{
+   id int auto_increment,
+   name varchar(255) unique,
+   price int,
+   primary key(id)
+}
+insert into product(name,price)
+values("apple", 23)
+
+select * from(product)
+
+create table customer{
+ id int auto_increment,
+ name varchar(255) not null,
+ address varvhar(50),
+ primary key(id)
+}
+insert into customer(name,address)
+values("santhosh", "hyderabad")
+
+select * from(customer)
+
+create table orders{
+   id int auto_increment,
+   product_id int,
+   customer_id int,
+   primary key(id),
+   Foregine key(customer_id) references customer(id)
+   foregine key(product_id) references product(id)
+}
+insert into orders(product_id,customer_id)
+values(1,1);
+
+select * from(orders)
+
+show tables              // it will show how many tables in the database
+describe product         // it will describe product table in the database
+truncate product         // it will delete all data in product
+drop table product       // it will delete table product from database
+
+ALTER TABLE customer                // it will add new col to ur table
+ADD age int not null
+
+ALTER TABLE customer                // it will drop col in table
+DROP age
+
+ALTER TABLE table_name                // it will modeify datatype for col and add constraint if any
+Modify age varchar(32) not null
+
+ALTER TABLE customer
+DROP primary key                      // Remove primary key into the table
+                                     
+ALTER TABLE customer                  // Adding primary key into the table
+ADD primary key(id)
+                                      // Remove primary key into the table
+ALTER TABLE customer
+DROP primary key

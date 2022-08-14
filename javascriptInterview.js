@@ -339,3 +339,33 @@ function capital(str){
   console.log(res)
 }
 capital(["abc", "pqr"])
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function capitalEle(arr,index = 0){
+  if(index < arr.length){
+    arr[index] = arr[index][0].toUpperCase() + arr[index].slice(1);
+    capitalEle(arr,index+1)
+  }
+}
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function capital1(arr){
+  let result = []
+  if(arr.length == 0) return []
+  let s = arr[0][0].toUpperCase() + arr[0].slice(1)
+  result.push(s)
+  return result.concat(capital1(arr.slice(1)))
+}
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function reverse(str){
+  if(str.length == 0) return ""
+  return reverse(str.slice(1)) + str[0]
+}
+function revSentWords(sent){
+  let words = sent.split(' ')
+  for(let i = 0; i < words.length; i++){
+      words[i] = reverse(words[i])
+  }
+}
+revSentWords("hi to all")
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

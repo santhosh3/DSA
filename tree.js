@@ -532,3 +532,68 @@ let root = bst.GETROOTNODE()
  //  console.log(bst.FINDMAXINTREE(root))
  //   bst.FINDMAX(root)
   console.log(bst.MAXDEPTH(root))
+  //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//814
+  function searchBST(root,val){
+    if(root == null) return null
+    if(root.val == val){
+        return root
+    }else if(val < root.val){
+        return searchBST(root.left, val)
+    }else{
+        return searchBST(root.right, val)
+    }
+  }
+
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//1325
+
+function removeLeafNodes(root,val){
+    if(root == null) return null
+    root.left = removeLeafNodes(root.left,val)
+    root.right = removeLeafNodes(root.right,val)
+    if(root.val == val && root.left == null && root.right == null){
+        return null
+    }
+    return root
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//226
+//invert binary tree
+
+function invertTree(root){
+    if(root == null) return root
+    let temp = new TreeNode()
+    temp = root.right
+    root.right = root.left
+    root.left = temp
+    root.left = invertTree(root.left);
+    root.right = invertTree(root.right);
+    return root
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//104
+//Max depth
+
+function maxDepth(root){
+    if(root === null) return 0
+    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right))
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//101 symetrical tree
+
+function isSymmetric(root){
+    return isSameTree(root,root)
+}
+function isSameTree(t1,t2){
+    if(t1 === null && t2 === null) return true
+    if(t1 === null || t2 === null) return false
+    return t1.val === t2.val && isSameTree(t1.left, t2.right) && isSameTree(t1.right,t2.left)
+}
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

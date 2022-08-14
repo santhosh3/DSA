@@ -351,3 +351,100 @@ let arr = [0,1,2,3,4,5,6,7,8,9,10]
 // console.log(power(2,8))
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// let str = "santhosh";
+
+// function isPalandrome(str){
+//     let isPlr = true
+//     let len = str.length
+//     let mid = Math.floor(len/2)
+//     for(let i = 0; i < mid; i++){
+//         if(str[i] == str[n-i-1]){
+//             continue;
+//         }else{
+//             isPlr = false
+//         }
+//     }
+//     return isPlr
+// }
+
+// function isPalandrome1(str, start = 0, end = str.length-1){
+//     if(start >= end) return true
+//     if(str[start] != str[end]) return false
+//     else return isPalandrome(str,start+1,end-1)
+// }
+
+// function power1(x,n){
+//     if(n == 0) return 1
+//     if(n < 0) return 1/power1(x,Math.abs(n))
+//     return x*power1(x,n-1)
+// }
+
+
+// function power(x,n){
+//     if(n == 0) return 1
+//     if(n == 1) return x
+//     if(n < 0) return 1/power(x,Math.abs(n))
+//     let temp = power(x,n/2)
+//     if(n % 2 == 0){
+//         return temp*temp
+//     }else{
+//         x*temp*temp
+//     }
+// }
+
+// Backtracking
+// how many paths are there to reach the goal
+
+// let pushed = [1,2,3,4,5]
+// let poped = [4,3,5,1,2]
+// let len = pushed.length 
+
+// let j = 0
+// let result = []
+
+// for(let i = 0; i < len; i++){
+//    result.push(pushed[i])           
+//    while(result.length !== 0 && j < len && result[result.length-1] == poped[j]){
+//      result.pop()
+//      j++
+//    }
+// }
+
+// console.log(j === len)
+
+
+function maxProfit(prices){
+    let sellIdx = prices[prices.length-1]
+    let profit  = 0
+    for(let buyIdx = prices.length; buyIdx >= 0; buyIdx--){
+        let buyVal = prices[buyIdx];
+        let sellVal = prices[sellIdx];
+        if(buyVal - sellVal >= 0){
+           sellIdx = buyIdx
+        }else{
+            let price = sellVal - buyVal
+            profit = Math.max(profit,price)
+        }
+        return profit
+    }
+}
+
+// console.log("11"-1) //10
+// console.log("11"+1) //"111"
+
+// let a = Math.random()
+// console.log(a)
+function insertionSort(arr){
+    var currentVal;
+    for(var i = 1; i < arr.length; i++){
+        currentVal = arr[i];
+        for(var j = i-1; j >= 0 && arr[j] > currentVal; j--){
+            arr[j+1] = arr[j]
+        }
+        arr[j+1] = currentVal
+    }
+    return arr
+}
+let arr1 = [2,1,9,76,4]
+console.log(insertionSort(arr1))
