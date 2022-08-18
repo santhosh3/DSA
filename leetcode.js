@@ -975,24 +975,23 @@ function isBalance(str) {
 //   return data
 // }
 
-// function getAllSubstrings(str) {
-//   var i, j, result = [],result1 = []; 
+function getAllSubstrings(str) {
+  var i, j, result = [],result1 = []; 
 
-//   for (i = 0; i < str.length; i++) {
-//       for (j = i + 1; j < str.length + 1; j++) {
-//           result.push(str.slice(i, j));
-//       }
-//   }
-//  // let count = 0
-//   for (j = 0; j < result.length; j++){
-//     if(result[j].includes('a') || result[j].includes('e') || result[j].includes('i') || result[j].includes('o') || result[j].includes('u') ){
-//         result1.push(result[j])
-//     }
-//   }
-//   return result
-// }
+  for (i = 0; i < str.length; i++) {
+      for (j = i + 1; j < str.length + 1; j++) {
+          result.push(str.slice(i, j));
+      }
+  }
+  for (j = 0; j < result.length; j++){
+    if(result[j].includes('aeiou') ){
+        result1.push(result[j])
+    }
+  }
+  return result1.length
+}
 
-// var theString = 'aeib';
+// var theString = 'cuaieuouac';
 // console.log(getAllSubstrings(theString));
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1043,16 +1042,42 @@ function searchMin(nums,l,r){
   return Math.min(searchMin(nums,1,mid), searchMin(nums,mid+1,r))
 }
 
-let currDate = new Date()
-console.log(currDate.toLocaleDateString())
-console.log(currDate.toDateString())
-console.log(currDate.toLocaleString())
-console.log(currDate.toISOString())
-console.log(currDate.toString())
-console.log(currDate.getMonth())
-console.log(currDate.getDay())
-console.log(currDate.getFullYear())
-console.log(currDate.getHours())
-console.log(currDate.getMilliseconds())
-console.log(currDate.getDate())
-console.log(currDate.getTimezoneOffset())
+// let currDate = new Date()
+// console.log(currDate.toLocaleDateString())
+// console.log(currDate.toDateString())
+// console.log(currDate.toLocaleString())
+// console.log(currDate.toISOString())
+// console.log(currDate.toString())
+// console.log(currDate.getMonth())
+// console.log(currDate.getDay())
+// console.log(currDate.getFullYear())
+// console.log(currDate.getHours())
+// console.log(currDate.getMilliseconds())
+// console.log(currDate.getDate())
+// console.log(currDate.getTimezoneOffset())
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//2062
+
+function countVowelSubstrings(word){
+  let res = 0, n = word.length
+  for(let i = 0; i < n-1; i++){
+    for(let j = i+1; j < n; j++){
+      if(isValid(word,i,j)) res++
+    }
+  }
+  return res
+}
+function isValid(s,i,j){
+  let set = new Set(['a','e','i','o','u'])
+  let res = new Set()
+  for(let k = i; k <= j; k++){
+    if(set.has(s[k])) set.add(s[k])
+    else return false
+  }
+  return res.size == set.size
+}
+
+let word = 'aeiouuu'
+console.log(countVowelSubstrings(word))
